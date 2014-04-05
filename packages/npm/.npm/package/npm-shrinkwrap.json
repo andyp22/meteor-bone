@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "async": {
+      "version": "0.2.10"
+    },
+    "xml2js": {
+      "version": "0.4.1",
+      "dependencies": {
+        "sax": {
+          "version": "0.5.8"
+        },
+        "xmlbuilder": {
+          "version": "2.1.0",
+          "dependencies": {
+            "underscore": {
+              "version": "1.6.0"
+            }
+          }
+        }
+      }
+    }
+  }
+}

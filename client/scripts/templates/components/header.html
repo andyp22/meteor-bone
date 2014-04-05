@@ -1,0 +1,23 @@
+<template name="componentHeader">
+    <h1><a href="/">Meteor Backbone Boilerplate</a></h1>
+    <div id="navbar">
+        <a href="/">
+            Home
+        </a>
+        {{#if loggedIn}}
+        &nbsp;|&nbsp;
+        <a href="/account">
+            {{#if name}}
+            	{{name}}'s
+            {{else}}
+            	Your {{name}}
+            {{/if}}
+            Account
+        </a>
+        {{/if}}
+    </div>
+    <div id="login">
+        {{> loginButtons}}
+    </div>
+</template>
+
