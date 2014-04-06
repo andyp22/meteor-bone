@@ -13,7 +13,7 @@ ViewHeader = Backbone.View.extend({
 		Template.componentHeader.events = {
 			// Prevent the page reloading for links.
 			"click a": function(e)  {
-				App.router.aReplace(e);
+				App.router.clickReplace(e);
 			}
 		};
 		// Template Helpers.

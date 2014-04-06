@@ -1,8 +1,12 @@
-/*
+/**
  * The main server file, general server side code should go here.
  */
-
-// Set permissions on the users collection.
+/**
+ * Set permissions on the users collection.
+ * 
+ * @memberof Meteor.users
+ * @private
+ */
 Meteor.users.allow({
 	// A user can update their own record.
 	update: function(userId, doc)  {

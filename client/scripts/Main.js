@@ -1,33 +1,98 @@
-/*
- * The main entry point for the client side of the app.
+/**
+ * The main entry point for the client side of the application.
+ * 
+ * @namespace App
  */
-
-// Create the main app object
-App = {};
-
-// Method to get the current user's email that won't ever throw an undefined error!
-Meteor.users.getActiveEmail = function() {
-	var email = "";
-    if(Meteor.userId())  {
-    	if(Meteor.user())  {
-    		if(Meteor.user().emails)  {
-                if(Meteor.user().emails[0])  {
-                    if(Meteor.user().emails[0].address)  {
-                        email = Meteor.user().emails[0].address;
-                    }
-                }
-            }
-        }
+App = {
+	/**
+	 * Backbone Router used to control application page changes.
+	 * 
+	 * @memberof App
+	 * @instance
+	 * @type {Backbone.Router}
+	 */
+	router: null,
+	/**
+	 * Meteor subscriptions which must be ready to start the application.
+	 * 
+	 * @memberof App
+	 * @instance
+	 * @type {Array}
+	 */
+	subscriptions: new Array(),
+	/**
+	 * Internal property which stores application ready state.
+	 * 
+	 * @memberof App
+	 * @private
+	 * @instance
+	 * @type {Boolean}
+	 */
+	_ready: false,
+	/**
+	 * Initialize the application.
+	 * 
+	 * @memberof App
+	 * @instance
+	 * @private 
+	 */
+	initialize: function()  {
+		// Create the backbone router.
+		this.router = new AppRouter({ factory: new RouteFactory() });
+		
+		// Set up any subscriptions needed before the application can start.
+		/*this.subscriptions.push(Meteor.subscribe('subscription_name')); //<- */
+		/*this.subscriptions.push(Meteor.subscribe('another_subscription_name')); //<- */
+		
+		// Do some more stuff...
+		
+	},
+	/**
+	 * A helper to let the application know when all subscriptions are ready to use.
+	 * 
+	 * @function
+	 * @memberof App
+	 * @instance
+	 * @returns {Boolean}
+	 */
+	isReady: function()  {
+		return this._ready;
+	},
+	/**
+	 * Start the application.
+	 * 
+	 * @function
+	 * @memberof App
+	 * @instance
+	 */
+	startup:  function()  {
+		// Initialize the application.
+		this.initialize();
+		
+		// If there are any subscriptions check for subscription ready state reactively.
+		if(App.subscriptions.length)  {
+			Deps.autorun(function (c) {
+				App.subscriptions.every(function(handle) {
+					if( handle.ready() && !App.isReady() )  {
+						c.stop();
+						App._ready = true;
+						// Start the application history.
+						Backbone.history.start({ pushState: true });
+					}
+				});
+			});
+		} else  {
+			// Otherwise the application is ready.
+			App._ready = true;
+			// Start the application history.
+			Backbone.history.start({ pushState: true });
+		}
+		
 	}
-    return email;
 };
-    
 
 Meteor.startup(function()  {
 	$(function()  {
-		// Create the backbone router
-        App.router = new Router();
-        Backbone.history.start({pushState: true});
+        App.startup();
 	});
 });
-

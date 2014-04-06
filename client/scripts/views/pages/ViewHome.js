@@ -8,8 +8,8 @@ ViewHome = Backbone.View.extend({
 	initialize: function()  {
 		Template.home.events = {
 			// Prevent the page reloading for links.
-			"click a": function(e)  {
-				App.router.aReplace(e);
+			"click a.internal": function(e)  {
+				App.router.clickReplace(e);
 			}
 		};
 		

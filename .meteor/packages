@@ -12,6 +12,6 @@ accounts-password
 accounts-ui
 backbone
 browser-policy
-coffeescript
+less
 npm
 service-configuration
