@@ -4,6 +4,7 @@ server/Google.js
 # Ignore build output
 /.build
 .meteor/local
+packages/npm/.npm
 
 # Ignore various other cruft
 .DS_Store
