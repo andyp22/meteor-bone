@@ -25,6 +25,11 @@ BaseRouter = Backbone.Router.extend({
 	constructor: function(options){
 		Backbone.Router.prototype.constructor.call(this, options);
 		
+		if(!options || !options.factory)  {
+			throw new Meteor.Error(500, 'No route factory specified.');
+			return;
+		}
+		
 		this.factory = options.factory;
 		
 		var _routes = this.factory.routes || this.routes;
