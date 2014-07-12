@@ -1,0 +1,42 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "mocha-web-velocity": {},
+      "jasmine-unit": {},
+      "velocity-html-reporter": {}
+    },
+    "packages": {
+      "mocha-web-velocity": {
+        "git": "https://github.com/mad-eye/meteor-mocha-web.git",
+        "tag": "v0.3.3",
+        "commit": "57776ea64ec5b432ca7b44f97ec42744fdb27520"
+      },
+      "jasmine-unit": {
+        "git": "https://github.com/xolvio/jasmine-unit.git",
+        "tag": "v0.1.21",
+        "commit": "b62ed16196fb7a6968ff5bd6dcf87bcdd08f3017"
+      },
+      "velocity-html-reporter": {
+        "git": "https://github.com/rdickert/velocity-html-reporter.git",
+        "tag": "v0.1.4",
+        "commit": "55f973519fb6db831678219057854b94a4cec846"
+      },
+      "mirror": {
+        "git": "https://github.com/xdissent/meteor-mirror.git",
+        "tag": "v0.0.2",
+        "commit": "03d965dcab2f976a1fdc6ce513edcd4c17b75746"
+      },
+      "velocity": {
+        "git": "https://github.com/xolvio/velocity.git",
+        "tag": "v0.1.11",
+        "commit": "a13c44c5acc0f4e7490bc28bc323d3dee799f9a3"
+      },
+      "package-stubber": {
+        "git": "https://github.com/alanning/meteor-package-stubber.git",
+        "tag": "v0.0.9",
+        "commit": "30ad312bae0f7acdfe12c85e3a65479119b4e8c7"
+      }
+    }
+  }
+}

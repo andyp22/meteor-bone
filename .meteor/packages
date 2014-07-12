@@ -15,3 +15,7 @@ browser-policy
 less
 npm
 service-configuration
+mocha-web-velocity
+jasmine-unit
+velocity-html-reporter
+velocity
